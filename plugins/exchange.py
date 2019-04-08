@@ -5,6 +5,7 @@ from urllib.request import urlopen
 import bs4, json
 from plugins import key_config
 
+# https://ko.wikipedia.org/wiki/ISO_4217
 currency_code = {
     '중국': 'CNY',
     '한국': 'KRW',
@@ -12,7 +13,9 @@ currency_code = {
     '홍콩': 'HKD',
     '미국': 'USD',
     '베트남': 'VND',
-    '대만': 'TWD'
+    '대만': 'TWD',
+    '싱가포르': 'SGD',
+    '싱가폴': 'SGD'
 }
 
 def run(currency):
