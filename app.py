@@ -2,7 +2,7 @@
 
 from flask import Flask
 from flask_restful import Resource, Api, abort, reqparse
-from plugins import weather
+from plugins import weather, exchange
 
 app = Flask(__name__)
 api = Api(app)
@@ -25,8 +25,12 @@ class Jandi(Resource):
         text = args['text']
 
         command = text.split(' ')[2]
+
         if command == '날씨':
             res = weather.run(text.split(' ')[1])
+        elif command == '환율':
+            res = exchange.run(text.split(' ')[1])
+
         return res, 200, headers
 
 api.add_resource(Jandi, '/')
