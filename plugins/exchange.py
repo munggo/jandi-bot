@@ -23,13 +23,14 @@ def run(currency):
     url = "https://free.currencyconverterapi.com/api/v6/convert?q=%s&compact=ultra&apiKey=%s" % \
           (key, key_config.CURRENCYCONVERTERAPI)
 
-    with urlopen(url) as response:
-        try:
+    try:
+        with urlopen(url) as response:
             res = response.read()
             r = json.loads(res)
             body_res = "[환율] **%s** => 한국: **%s** KRW" % (currency, r[key])
-        except Exception as e:
-            print(e)
+    except Exception as e:
+        body_res = "서버 오류로 응답할 수 없습니다."
+        print(e)
 
     r = {"body":body_res}
     return r
