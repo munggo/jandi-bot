@@ -38,7 +38,7 @@ class Jandi(Resource):
         except Exception as e:
             print(e)
             if '뭐먹지' in text or '점심' in text or '먹을' in text or '드실' in text:
-                meal_list = ['킨카 이자카야', '진미평양냉면', '최전방부대찌&닭갈비', '쉐이크쉑버거']
+                meal_list = ['킨카 이자카야', '진미평양냉면', '최전방부대찌&닭갈비', '쉐이크쉑버거', '소이연남 마오', '오늘 점심은 패스로', '부르스 리']
                 data = "%s님 오늘은 **%s** 가시죠!" % (writer, random.choice(meal_list))
                 res ={'body': data}
             elif '좋지' in text or '좋아' in text or '좋니' in text:
