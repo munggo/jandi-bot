@@ -26,12 +26,14 @@ class Jandi(Resource):
         args = parser.parse_args()
         text = args['text']
 
-        command = text.split(' ')[2]
-
-        if command == '날씨':
-            res = weather.run(text.split(' ')[1])
-        elif command == '환율':
-            res = exchange.run(text.split(' ')[1])
+        try:
+            command = text.split(' ')[2]
+            if command == '날씨':
+                res = weather.run(text.split(' ')[1])
+            elif command == '환율':
+                res = exchange.run(text.split(' ')[1])
+        except:
+            pass
 
         if '좋지' in text or '좋아' in text or '좋니' in text:
             res = random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."])
