@@ -4,7 +4,7 @@ from flask import Flask
 from flask_restful import Resource, Api, abort, reqparse
 from plugins import weather, exchange
 
-import random
+import random, json
 
 app = Flask(__name__)
 api = Api(app)
@@ -37,7 +37,7 @@ class Jandi(Resource):
 
         if '좋지' in text or '좋아' in text or '좋니' in text:
             data = random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."])
-            res = "{body: %s}" % (data)
+            res ={'body': data}
         return res, 200, headers
 
 api.add_resource(Jandi, '/')
