@@ -33,7 +33,10 @@ class Jandi(Resource):
                 res = weather.run(text.split(' ')[1])
             elif command == '환율':
                 res = exchange.run(text.split(' ')[1])
-        except:
+            else:
+                raise ValueError
+        except Exception as e:
+            print(e)
             if '좋지' in text or '좋아' in text or '좋니' in text:
                 data = "%s님 %s" % (writer, random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."]))
                 res ={'body': data}
