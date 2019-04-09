@@ -37,7 +37,11 @@ class Jandi(Resource):
                 raise ValueError
         except Exception as e:
             print(e)
-            if '좋지' in text or '좋아' in text or '좋니' in text:
+            if '뭐먹지' in text or '점심' in text or '먹을' in text or '드실' in text:
+                meal_list = ['킨카 이자카야', '진미평양냉면', '최전방부대찌&닭갈비', '쉐이크쉑버거']
+                data = "%s님 오늘은 **%s** 가시죠!" % (writer, random.choice(meal_list))
+                res ={'body': data}
+            elif '좋지' in text or '좋아' in text or '좋니' in text:
                 data = "%s님 %s" % (writer, random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."]))
                 res ={'body': data}
             else:
