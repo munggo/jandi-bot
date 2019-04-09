@@ -36,7 +36,8 @@ class Jandi(Resource):
             pass
 
         if '좋지' in text or '좋아' in text or '좋니' in text:
-            res = random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."])
+            data = random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."])
+            res = "{body: %s}" % (data)
         return res, 200, headers
 
 api.add_resource(Jandi, '/')
