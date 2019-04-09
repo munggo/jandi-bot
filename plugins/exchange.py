@@ -24,10 +24,9 @@ def run(currency):
             res = response.read()
             r = json.loads(res)
             for result in r:
-                print(result)
                 if result['cur_unit'] == key:
                     break
-            body_res = "**%s %s**\n팔때: %s KRW\n살때 %s KRW\n매매 기준: %s KRW" % \
+            body_res = "**%s %s**\n팔때: %s KRW\n살때: %s KRW\n매매 기준: %s KRW" % \
                        (currency, key, result['ttb'], result['tts'], result['deal_bas_r'])
     except Exception as e:
         body_res = "서버 오류로 응답할 수 없습니다."
