@@ -25,6 +25,7 @@ class Jandi(Resource):
     def post(self):
         args = parser.parse_args()
         text = args['text']
+        writer = args['writerName']
 
         try:
             command = text.split(' ')[2]
@@ -33,11 +34,12 @@ class Jandi(Resource):
             elif command == '환율':
                 res = exchange.run(text.split(' ')[1])
         except:
-            pass
-
-        if '좋지' in text or '좋아' in text or '좋니' in text:
-            data = random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."])
-            res ={'body': data}
+            if '좋지' in text or '좋아' in text or '좋니' in text:
+                data = "%s님 %s" % (writer, random.choice(["네 좋아요!", "글쎄요 잘 모르겠어요", "당연하죠!", "사랑합니다.", "걍 일이나하죠?", "..."]))
+                res ={'body': data}
+            else:
+                data = "%s님 %s" % (writer, random.choice(["네???", "ㅋㅋㅋㅋㅋ", "심심해요~!", "아이앤코 화이팅~~~~~!", "매출 올리자!!!"]))
+                res ={'body': data}
         return res, 200, headers
 
 api.add_resource(Jandi, '/')
